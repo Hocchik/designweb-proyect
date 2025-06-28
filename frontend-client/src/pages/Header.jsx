@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'; // ✅ Importar correctamente
 
 const Header = () => {
     const [activeMenu, setActiveMenu] = useState(null);
@@ -28,14 +31,14 @@ const Header = () => {
                         to="/home"
                         className="hover:text-amber-700 transition duration-200"
                     >
-                        name
+                        Name
                     </Link>
                 </h1>
             </div>
 
             <nav className="nav font-bold text-lg text-black">
                 <ul className="flex items-center justify-end space-x-8">
-                    <li className="relative group">
+                    <li>
                         <Link
                             to="/home"
                             className="hover:text-amber-700 transition duration-200"
@@ -44,8 +47,7 @@ const Header = () => {
                             Home
                         </Link>
                     </li>
-
-                    <li className="relative group">
+                    <li>
                         <Link
                             to="/products"
                             className="hover:text-amber-700 transition duration-200"
@@ -54,7 +56,7 @@ const Header = () => {
                             Productos
                         </Link>
                     </li>
-                    <li className="relative group">
+                    <li>
                         <Link
                             to="/promotions"
                             className="hover:text-amber-700 transition duration-200"
@@ -63,8 +65,7 @@ const Header = () => {
                             Promociones
                         </Link>
                     </li>
-
-                    <li className="relative group">
+                    <li>
                         <Link
                             to="/contactus"
                             className="hover:text-amber-700 transition duration-200"
@@ -75,6 +76,21 @@ const Header = () => {
                     </li>
                 </ul>
             </nav>
+
+            <div className="flex items-center space-x-4">
+                <Link
+                    to="/login"
+                    className="text-black hover:text-amber-700 transition duration-200 font-semibold"
+                >
+                    <FontAwesomeIcon icon={faCircleUser} size="2x" />
+                </Link>
+                <Link
+                    to="/"
+                    className="text-black hover:text-amber-700 transition duration-200"
+                >
+                    <FontAwesomeIcon icon={faCartShopping} size="2x" />
+                </Link>
+            </div>
         </header>
     );
 };

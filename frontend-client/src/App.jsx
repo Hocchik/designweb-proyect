@@ -9,13 +9,16 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import './index.css';
 
-
 const App = () => {
   return (
     <Router>
       <Routes>
         {/* Redirección desde la raíz hacia la página principal */}
         <Route path="/" element={<Navigate to="/home" replace />} />
+
+        {/* Rutas sin Header y Footer */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
         {/* Rutas que incluyen Header y Footer */}
         <Route element={<Layout />}>
@@ -48,7 +51,7 @@ const Layout = () => {
 // Componente para manejar páginas no encontradas
 const NotFound = () => {
   return (
-    <div>
+    <div style={{ padding: '40px', textAlign: 'center' }}>
       <h2>404 - Página No Encontrada</h2>
       <p>Lo sentimos, la página que buscas no existe.</p>
     </div>

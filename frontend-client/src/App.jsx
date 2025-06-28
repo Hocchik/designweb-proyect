@@ -1,39 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import Home from './pages/Home';
+import Header from './pages/Header';
+import Footer from './pages/Footer';
+import Promotions from './components/Principal/Promotions';
+import Products from './components/Principal/Products';
+import ContactUs from './components/Principal/ContactUs';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import './index.css';
 
-function App() {
-  const [count, setCount] = useState(0)
 
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        {/* Redirección desde la raíz hacia la página principal */}
+        <Route path="/" element={<Navigate to="/home" replace />} />
+
+        {/* Rutas que incluyen Header y Footer */}
+        <Route element={<Layout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/promotions" element={<Promotions />} />
+          <Route path="/contactus" element={<ContactUs />} />
+        </Route>
+
+        {/* Ruta para manejar páginas no encontradas */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  );
+};
+
+// Componente Layout que incluye Header y Footer
+const Layout = () => {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-        <p class="text-3xl font-bold underline">
-          Hello world!
-        </p>
-
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <main style={{ minHeight: '80vh', padding: '20px' }}>
+        <Outlet />
+      </main>
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default App
+// Componente para manejar páginas no encontradas
+const NotFound = () => {
+  return (
+    <div>
+      <h2>404 - Página No Encontrada</h2>
+      <p>Lo sentimos, la página que buscas no existe.</p>
+    </div>
+  );
+};
+
+export default App;

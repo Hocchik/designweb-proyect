@@ -8,8 +8,8 @@ const Footer = () => {
 
     return (
         <>
-            <footer className=" text-white text-center lg:text-left" style={{ backgroundColor: "#041030" }}>
-                <div className="flex items-center justify-center border-b-2 border-neutral-50 p-6  lg:justify-between">
+            <footer className=" text-white text-center lg:text-left bg-black bg-opacity-50 " >
+                <div className="flex items-center justify-center border-b-2 border-neutral-50 p-6  lg:justify-between ">
                     <div className="me-12 hidden lg:block">
                         <span className='text-white font-bold'>Conéctate con nosotros en nuestras redes sociales:</span>
                     </div>
@@ -70,37 +70,37 @@ const Footer = () => {
                         </a>
                     </div>
                 </div>
-                <div className="mx-6 py-10 text-center md:text-left">
+                <div className=' border-b-2 border-neutral-50'><div className="mx-6 py-5
+                 text-center md:text-left ">
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
 
                         <div>
-                            <h6 className="mb-4  uppercase text-white font-bold">Healthy Mind</h6>
+                            <h6 className="mb-4  uppercase text-white font-bold">FastQRPay</h6>
                             <p className='text-white'>
-                                Healthy Mind es una plataforma web enfocada en la promoción del bienestar mental y la salud psicológica.
-                                La plataforma incluye herramientas como un sistema de geolocalización para encontrar sedes cercanas y una interfaz amigable y accesible. Healthy Mind busca ser un referente en apoyo psicológico, especialmente en momentos de crisis, ofreciendo un espacio seguro y confiable para todos.
+                                FastQRPay es un prototipo de aplicación móvil diseñado para optimizar el proceso de pago en cadenas de comida rápida mediante el uso de códigos QR. Su objetivo es agilizar las transacciones, reducir las colas y mejorar la experiencia del cliente con pagos rápidos, seguros y sin contacto.
                             </p>
                         </div>
 
-                        <div className="text-center md:text-center md:col-start-2">
+                        <div className="text-center md:text-center md:col-start-2 space-y-2">
                             <h6 className="mb-4 font-bold uppercase text-white">Enlaces útiles</h6>
-                            <p className="mb-4">
+                            <p className="">
                                 <Link to="/home" className="text-white">
                                     Home
                                 </Link>
                             </p>
-                            <p className="mb-4">
-                                <Link to="/sedes" className="text-white">
-                                    Sedes
+                            <p className="">
+                                <Link to="/products" className="text-white">
+                                    Productos
                                 </Link>
                             </p>
-                            <p className="mb-4">
-                                <Link to="/preguntasFrecuentes" className="text-white">
-                                    Preguntas Frecuentes
+                            <p className="">
+                                <Link to="/promotions" className="text-white">
+                                    Promociones
                                 </Link>
                             </p>
-                            <p className="mb-4">
-                                <Link to="/contactanos" className="text-white">
-                                    Contactanos
+                            <p className="">
+                                <Link to="/contactus" className="text-white">
+                                    Contáctanos
                                 </Link>
                             </p>
                         </div>
@@ -109,16 +109,17 @@ const Footer = () => {
                             <h6 className="mb-4 font-bold text-white uppercase">Contacto</h6>
                             <div className="space-y-2">
                                 <p>Lima, Perú</p>
-                                <p>Healthy-Mind@gmail.com</p>
-                                <p>+51 01 234 5678</p>
-                                <p>+51 01 234 5679</p>
+                                <p>FastQRPay.contacto@gmail.com</p>
+                                <p>+51 987 654 321</p>
+                                <p>+51 912 345 678</p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="text-center p-6  text-white " style={{ backgroundColor: "#041030" }}>
+                </div></div>
+                
+                <div className="text-center p-6  text-white bg-black bg-opacity-50 ">
                     <span>© 2024 Derechos Reservados:</span>
-                    <a className="text-white" href="https://technologyplus.pe/"> Healthy Mind</a>
+                    <a className="text-white" href="#"> FastQRPay</a>
                 </div>
             </footer >
         </>

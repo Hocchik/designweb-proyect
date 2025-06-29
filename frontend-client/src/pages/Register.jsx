@@ -24,32 +24,46 @@ const Register = () => {
     };
 
     return (
-        <section className="flex flex-col justify-center items-center min-h-screen bg-black text-white">
-            <div className="m-5 p-5 bg-black text-white rounded-lg shadow-md max-w-md w-full">
-                <h3 className="text-3xl font-bold mb-4">Crear Cuenta</h3>
-                <form className="grid grid-cols-1 gap-4 w-full" onSubmit={handleSubmit(onSubmit)}>
+        <section
+            className="flex flex-col justify-center items-center min-h-screen text-white relative overflow-hidden"
+            style={{
+                backgroundImage: `url('https://media.istockphoto.com/id/914633400/es/foto/familia-con-dos-ni%C3%B1os-comiendo-comida-r%C3%A1pida.jpg?s=170667a&w=0&k=20&c=7pJp8QO2Dh_fBD9iZ8Ugy7CbSpaAgFlo3pw3s5fE70A=')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}
+        >
+            {/* Capa de desenfoque */}
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0" />
+
+            {/* Formulario */}
+            <div className="relative z-10 m-5 p-8 bg-black/80 rounded-2xl shadow-lg w-full max-w-md border border-white/10">
+                <h3 className="text-3xl font-bold mb-6 text-center">Crear Cuenta</h3>
+
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                     <div>
-                        <label htmlFor="name" className="block text-gray-300">Nombre</label>
+                        <label htmlFor="name" className="block text-gray-300 mb-1">Nombre</label>
                         <input
                             id="name"
                             type="text"
                             {...register('nombre', { required: true })}
-                            className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm py-2 text-black"
+                            className="w-full px-4 py-2 rounded-md bg-white text-black border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
-                        {errors.nombre && <span className="text-red-500">Este campo es requerido</span>}
+                        {errors.nombre && <span className="text-red-400 text-sm">Este campo es requerido</span>}
                     </div>
+
                     <div>
-                        <label htmlFor="email" className="block text-gray-300">Correo Electrónico</label>
+                        <label htmlFor="email" className="block text-gray-300 mb-1">Correo Electrónico</label>
                         <input
                             id="email"
                             type="email"
                             {...register('email', { required: true })}
-                            className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm py-2 text-black"
+                            className="w-full px-4 py-2 rounded-md bg-white text-black border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
-                        {errors.email && <span className="text-red-500">Este campo es requerido</span>}
+                        {errors.email && <span className="text-red-400 text-sm">Este campo es requerido</span>}
                     </div>
+
                     <div>
-                        <label htmlFor="password" className="block text-gray-300">Contraseña</label>
+                        <label htmlFor="password" className="block text-gray-300 mb-1">Contraseña</label>
                         <input
                             id="password"
                             type="password"
@@ -60,44 +74,50 @@ const Register = () => {
                                     message: 'Debe tener 8+ caracteres, mayúscula, minúscula, número y símbolo',
                                 },
                             })}
-                            className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm py-2 text-black"
+                            className="w-full px-4 py-2 rounded-md bg-white text-black border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
-                        {errors.password && <span className="text-red-500">{errors.password.message}</span>}
+                        {errors.password && <span className="text-red-400 text-sm">{errors.password.message}</span>}
                     </div>
+
                     <div>
-                        <label htmlFor="confirm-password" className="block text-gray-300">Confirmar Contraseña</label>
+                        <label htmlFor="confirm-password" className="block text-gray-300 mb-1">Confirmar Contraseña</label>
                         <input
                             id="confirm-password"
                             type="password"
                             {...register('confirmacionContraseña', { required: true })}
-                            className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm py-2 text-black"
+                            className="w-full px-4 py-2 rounded-md bg-white text-black border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
-                        {errors.confirmacionContraseña && <span className="text-red-500">Este campo es requerido</span>}
+                        {errors.confirmacionContraseña && (
+                            <span className="text-red-400 text-sm">Este campo es requerido</span>
+                        )}
                     </div>
+
                     <div className="text-center">
                         <button
                             type="submit"
-                            className="mt-4 px-4 py-2 text-red-700 hover:text-white border border-red-700 hover:bg-red-800 rounded-lg"
+                            className="w-full py-2 bg-transparent text-red-500 border border-red-600 hover:bg-red-600 hover:text-white font-semibold rounded-md transition duration-300"
                         >
                             Registrarse
                         </button>
                     </div>
                 </form>
-                <div className="text-sm text-center text-gray-300 mt-4">
+
+                <div className="text-sm text-center text-gray-300 mt-6">
                     ¿Ya tienes una cuenta?{' '}
-                    <Link to="/login" className="text-red-500 hover:text-red-300">
+                    <Link to="/login" className="text-red-400 hover:text-red-200 underline">
                         Inicia sesión aquí
                     </Link>
                 </div>
             </div>
 
+            {/* Modal de éxito */}
             {showModal && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-white p-5 rounded-lg shadow-lg text-center">
+                <div className="fixed inset-0 flex items-center justify-center z-20 bg-black bg-opacity-50">
+                    <div className="bg-white p-6 rounded-xl shadow-xl text-center">
                         <svg className="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                         </svg>
-                        <h2 className="text-xl font-bold">Registro exitoso</h2>
+                        <h2 className="text-xl font-bold text-black">Registro exitoso</h2>
                     </div>
                 </div>
             )}

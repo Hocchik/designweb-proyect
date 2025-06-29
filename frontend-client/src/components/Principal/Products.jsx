@@ -47,7 +47,7 @@ const Products = () => {
                 {products.map((product) => (
                     <div
                         key={product.id}
-                        className="bg-white shadow-md rounded-lg overflow-hidden"
+                        className="bg-white shadow-md rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
                     >
                         <img
                             src={product.image}

@@ -29,7 +29,7 @@ const Promotions = () => {
                 {promotions.map((promo) => (
                     <div
                         key={promo.id}
-                        className="bg-white rounded-lg shadow-lg overflow-hidden"
+                        className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
                     >
                         <img
                             src={promo.image}

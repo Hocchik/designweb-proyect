@@ -5,24 +5,24 @@ const Carrusel = () => {
 
     const images = [
         {
-            src: "https://moviecrazyplanet.com/wp-content/uploads/2024/10/El-tiempo-que-tenemos-credito-Imagem-Films-MX-1-scaled.jpg",
-            title: "El Tiempo que Tenemos",
-            description: "Una historia de amor eterna, profundamente conmovedora y envolvente."
+            src: "https://images.unsplash.com/photo-1606755962773-0c1bfbf0d4c2",
+            title: "Combo Doble Cheeseburger",
+            description: "Incluye 2 hamburguesas con queso, papas medianas y gaseosa por S/ 18.90."
         },
         {
-            src: "https://m.media-amazon.com/images/S/pv-target-images/20b22107a5a08f7f38f9ceb1ea742cebacf2b1de10a15a117ee8422fc5ffcea7._SX1080_FMjpg_.jpg",
-            title: "Terrifier 3",
-            description: "Terror más allá de lo imaginable."
+            src: "https://images.unsplash.com/photo-1604908177225-c2f739b88962",
+            title: "Pizza Familiar 2x1",
+            description: "Llévate 2 pizzas familiares por el precio de 1. ¡Solo esta semana!"
         },
         {
-            src: "https://imgmedia.larepublica.pe/1200x630/larepublica/original/2024/05/31/665a867d06ec6a483010c7d5.jpg",
-            title: "Haikyu! La batalla del basurero",
-            description: "El emocionante partido entre Nekoma y Karasuno."
+            src: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f",
+            title: "Pollo Broaster + Papas",
+            description: "1/4 de pollo broaster con papas y ensalada por S/ 12.50. ¡Rápido y delicioso!"
         },
         {
-            src: "https://hips.hearstapps.com/hmg-prod/images/venom-2-fotogramas-1634239260.png?crop=1xw:1xh;center,top&resize=1200:*",
-            title: "Venom",
-            description: "El antihéroe regresa en una nueva aventura."
+            src: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90",
+            title: "10 Nuggets + Salsa Gratis",
+            description: "Ordena 10 nuggets y recibe una salsa BBQ o tártara totalmente gratis."
         },
     ];
 

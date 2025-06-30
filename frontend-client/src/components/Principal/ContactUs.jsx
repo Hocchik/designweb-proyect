@@ -2,82 +2,99 @@ import React from 'react';
 
 const ContactUs = () => {
     return (
-        <section id="Negocios" className="flex flex-col justify-center items-center m-5 p-5 bg-orange-800 text-white mt-20">
-            <h3 className="text-3xl font-bold mb-4">¡Contáctanos!</h3>
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+        <section
+            id="Negocios"
+            className="flex flex-col justify-center items-center m-5 p-10 bg-neutral-900 text-white rounded-2xl shadow-xl mt-20"
+        >
+            <h3 className="text-3xl font-bold mb-6 text-white">¡Contáctanos!</h3>
+
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
                 <div>
-                    <label htmlFor="nombre" className="block text-white">Nombre</label>
+                    <label htmlFor="nombre" className="block mb-1">Nombre</label>
                     <input
                         type="text"
-                        className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-3 text-black"
                         id="nombre"
                         required
+                        className="w-full px-4 py-3 rounded-lg bg-neutral-800 text-white placeholder-gray-400 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Tu nombre"
                     />
                 </div>
+
                 <div>
-                    <label htmlFor="apellido" className="block text-white">Apellido</label>
+                    <label htmlFor="apellido" className="block mb-1">Apellido</label>
                     <input
                         type="text"
-                        className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-3 text-black"
                         id="apellido"
                         required
+                        className="w-full px-4 py-3 rounded-lg bg-neutral-800 text-white placeholder-gray-400 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Tu apellido"
                     />
                 </div>
-                <div className="col-span-2">
-                    <label htmlFor="correo" className="block text-white">Correo</label>
+
+                <div className="md:col-span-2">
+                    <label htmlFor="correo" className="block mb-1">Correo electrónico</label>
                     <input
                         type="email"
-                        className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-3 text-black"
                         id="correo"
-                        placeholder="name@example.com"
                         required
+                        placeholder="ejemplo@correo.com"
+                        className="w-full px-4 py-3 rounded-lg bg-neutral-800 text-white placeholder-gray-400 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </div>
+
                 <div>
-                    <label htmlFor="telefono" className="block text-white">Teléfono</label>
+                    <label htmlFor="telefono" className="block mb-1">Teléfono</label>
                     <input
                         type="tel"
-                        className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-3 text-black"
                         id="telefono"
                         maxLength={9}
                         required
+                        placeholder="987654321"
+                        className="w-full px-4 py-3 rounded-lg bg-neutral-800 text-white placeholder-gray-400 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </div>
+
                 <div>
-                    <label htmlFor="ciudad" className="block text-white">Ciudad</label>
+                    <label htmlFor="ciudad" className="block mb-1">Ciudad</label>
                     <select
-                        className="text-black form-select mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-3"
                         id="ciudad"
                         required
+                        className="w-full px-4 py-3 rounded-lg bg-neutral-800 text-white border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
-                        <option selected disabled value="">Elige...</option>
+                        <option value="" disabled selected>Selecciona una ciudad</option>
                         <option>Lima</option>
+                        <option>Arequipa</option>
+                        <option>Trujillo</option>
                     </select>
                 </div>
-                <div className="col-span-2">
-                    <label htmlFor="descripcion" className="block text-white">Descripción</label>
+
+                <div className="md:col-span-2">
+                    <label htmlFor="descripcion" className="block mb-1">Mensaje o descripción</label>
                     <textarea
-                        className="form-textarea mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-3 text-black"
                         id="descripcion"
-                        placeholder="Escribe aquí..."
                         required
+                        placeholder="Escribe aquí tu consulta..."
+                        className="w-full px-4 py-3 rounded-lg bg-neutral-800 text-white placeholder-gray-400 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        rows={4}
                     ></textarea>
                 </div>
-                <div className="col-span-2 flex items-center mb-4">
+
+                <div className="md:col-span-2 flex items-start space-x-2">
                     <input
-                        className="form-check-input mr-2"
                         type="checkbox"
                         id="terminos"
                         required
+                        className="accent-blue-600"
                     />
-                    <label className="text-white" htmlFor="terminos">
-                        Estoy de acuerdo con los términos y condiciones
+                    <label htmlFor="terminos">
+                        Acepto los términos y condiciones
                     </label>
                 </div>
-                <div className="col-span-2 text-center">
+
+                <div className="md:col-span-2 text-center">
                     <button
-                        className="mt-4  text-red-300 hover:text-white border border-red-700 hover:bg-red-300 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
                         type="submit"
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md"
                     >
                         Enviar
                     </button>

@@ -13,8 +13,13 @@ const Register = () => {
             return;
         }
 
-        // Simular registro exitoso
-        console.log('Datos del usuario registrado:', data);
+        // Guardar usuario simulado en localStorage
+        const fakeUser = {
+            nombre: data.nombre,
+            email: data.email,
+            password: data.password
+        };
+        localStorage.setItem('fakeUser', JSON.stringify(fakeUser));
 
         setShowModal(true);
         setTimeout(() => {

@@ -9,11 +9,9 @@ const Login = () => {
     const [error, setError] = useState(false);
 
     const onSubmit = handleSubmit((data) => {
-        // Simula una verificación básica (puedes ajustar los valores de prueba aquí)
-        const demoEmail = 'demo@correo.com';
-        const demoPassword = '123456';
-
-        if (data.email === demoEmail && data.password === demoPassword) {
+        // Obtener usuario simulado de localStorage
+        const user = JSON.parse(localStorage.getItem('fakeUser'));
+        if (user && data.email === user.email && data.password === user.password) {
             console.log('Inicio de sesión simulado exitoso:', data);
             navigate('/home'); // Redirige al home
         } else {

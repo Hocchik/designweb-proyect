@@ -48,7 +48,7 @@ const Header = () => {
                         to="/home"
                         className="hover:text-amber-700 transition duration-200"
                     >
-                        Name
+                        FastQRPay
                     </Link>
                 </h1>
             </div>
@@ -61,7 +61,7 @@ const Header = () => {
                             className="hover:text-amber-700 transition duration-200"
                             onClick={closeMenu}
                         >
-                            Home
+                            FastQRPay
                         </Link>
                     </li>
                     <li>

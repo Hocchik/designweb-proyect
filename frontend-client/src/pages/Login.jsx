@@ -9,11 +9,9 @@ const Login = () => {
     const [error, setError] = useState(false);
 
     const onSubmit = handleSubmit((data) => {
-        // Simula una verificación básica (puedes ajustar los valores de prueba aquí)
-        const demoEmail = 'demo@correo.com';
-        const demoPassword = '123456';
-
-        if (data.email === demoEmail && data.password === demoPassword) {
+        // Obtener usuario simulado de localStorage
+        const user = JSON.parse(localStorage.getItem('fakeUser'));
+        if (user && data.email === user.email && data.password === user.password) {
             console.log('Inicio de sesión simulado exitoso:', data);
             navigate('/home'); // Redirige al home
         } else {
@@ -22,28 +20,43 @@ const Login = () => {
     });
 
     return (
-        <section className="flex flex-col justify-center items-center min-h-screen bg-black text-white">
-            <div className="m-5 p-5 bg-black text-white rounded-lg shadow-md max-w-md w-full">
-                <h3 className="text-3xl font-bold mb-4">Iniciar Sesión</h3>
-                <form className="grid grid-cols-1 gap-4 w-full" onSubmit={onSubmit}>
+     <section
+            className="flex flex-col justify-center items-center min-h-screen text-white relative overflow-hidden"
+            style={{
+                backgroundImage: `url('https://media.istockphoto.com/id/914633400/es/foto/familia-con-dos-ni%C3%B1os-comiendo-comida-r%C3%A1pida.jpg?s=170667a&w=0&k=20&c=7pJp8QO2Dh_fBD9iZ8Ugy7CbSpaAgFlo3pw3s5fE70A=')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}
+        >
+            {/* Capa difuminada */}
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-0"></div>
+
+            {/* Contenedor del formulario */}
+            <div className="relative z-10 m-5 p-8 bg-black/80 text-white rounded-2xl shadow-lg w-full max-w-md border border-white/10">
+                <h3 className="text-3xl font-bold mb-6 text-center">Iniciar Sesión</h3>
+                
+                <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
                     <div>
-                        <label htmlFor="email" className="block text-gray-300">Correo Electrónico</label>
+                        <label htmlFor="email" className="block text-gray-300 mb-1">Correo Electrónico</label>
                         <input
                             id="email"
                             {...register('email', { required: true })}
                             type="email"
                             required
-                            className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-2 text-black"
+                            placeholder="usuario@ejemplo.com"
+                            className="w-full px-4 py-2 rounded-md bg-white text-black border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
+
                     <div>
-                        <label htmlFor="password" className="block text-gray-300">Contraseña</label>
+                        <label htmlFor="password" className="block text-gray-300 mb-1">Contraseña</label>
                         <input
                             id="password"
                             {...register('password', { required: true })}
                             type="password"
                             required
-                            className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 py-2 text-black"
+                            placeholder="********"
+                            className="w-full px-4 py-2 rounded-md bg-white text-black border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -56,16 +69,16 @@ const Login = () => {
                     <div className="text-center">
                         <Button
                             type="submit"
-                            className="ml-auto mt-4 px-4 py-2 text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg"
+                            className="w-full py-2 bg-transparent text-red-500 border border-red-600 hover:bg-red-600 hover:text-white font-semibold rounded-md transition duration-300"
                         >
                             Iniciar Sesión
                         </Button>
                     </div>
                 </form>
 
-                <div className="text-sm text-center text-gray-300 mt-4">
+                <div className="text-sm text-center text-gray-300 mt-6">
                     ¿No tienes una cuenta?{' '}
-                    <Link to="/register" className="text-red-500 hover:text-red-300">
+                    <Link to="/register" className="text-red-400 hover:text-red-200 underline">
                         Regístrate aquí
                     </Link>
                 </div>

@@ -8,6 +8,7 @@ import ContactUs from './components/Principal/ContactUs';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import './index.css';
+import Checkout from './components/Principal/checkout';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/promotions" element={<Promotions />} />
           <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Route>
 
         {/* Ruta para manejar páginas no encontradas */}

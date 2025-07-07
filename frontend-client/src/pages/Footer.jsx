@@ -27,17 +27,14 @@ const Footer = () => {
         </div>
 
         {/* Enlaces útiles */}
-        <div>
-          <h6 className="uppercase font-bold mb-4">Enlaces útiles</h6>
-          <ul className="space-y-2">
+        <div className="flex flex-col items-center">
+          <h6 className="uppercase font-bold mb-4 text-center">Enlaces útiles</h6>
+          <ul className="space-y-2 text-center">
             <li><Link to="/home" className="hover:underline">Home</Link></li>
-            <li><Link to="/products" className="hover:underline">Productos</Link></li>
-            <li><Link to="/promotions" className="hover:underline">Promociones</Link></li>
+            <li><Link to="/catalog" className="hover:underline">Catálogo</Link></li>
             <li><Link to="/contactus" className="hover:underline">Contáctanos</Link></li>
           </ul>
         </div>
-
-        {/* Contacto */}
         <div className="md:text-right">
           <h6 className="uppercase font-bold mb-4">Contacto</h6>
           <ul className="space-y-2">

@@ -2,13 +2,13 @@ import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-
 import Home from './pages/Home';
 import Header from './pages/Header';
 import Footer from './pages/Footer';
-import Promotions from './components/Principal/Promotions';
-import Products from './components/Principal/Products';
+import Catalog from './components/Catalog/Catalog';
 import ContactUs from './components/Principal/ContactUs';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import './index.css';
 import Checkout from './components/Principal/checkout';
+import CatalogProducts from './CatalogProducts';
 
 const App = () => {
   return (
@@ -24,8 +24,9 @@ const App = () => {
         {/* Rutas que incluyen Header y Footer */}
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/promotions" element={<Promotions />} />
+          <Route path="/catalog" element={<Catalog />}>
+            <Route path=":category" element={<CatalogProducts />} />
+          </Route>
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/checkout" element={<Checkout />} />
         </Route>

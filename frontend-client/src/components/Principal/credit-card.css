@@ -1,0 +1,13 @@
+/* Centra y limita el ancho del formulario principal */.container.py-4 {max-width: 430px;margin: 40px auto 0 auto;background: #fff;border-radius: 18px;box-shadow: 0 4px 32px 0 rgba(0,0,0,0.09);padding: 2.5rem 2rem 2rem 2rem;}
+/* Tarjeta bancaria visual */ .credit-card-box { width: 100%; display: flex; justify-content: center; }
+.credit-card { width: 340px; height: 200px; background: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%); border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.13); color: #fff; padding: 1.5rem 1.2rem 1.2rem 1.2rem; position: relative; margin-bottom: 1rem; font-family: 'Segoe UI', Arial, sans-serif; }
+.credit-card .chip { width: 48px; height: 32px; background: linear-gradient(90deg, #e0e0e0 0%, #bdbdbd 100%); border-radius: 8px; margin-bottom: 1.2rem; }
+.credit-card .card-type { position: absolute; top: 1.5rem; right: 1.2rem; font-size: 2.1rem; color: #fff; opacity: 0.85; }
+.credit-card .card-number { font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 1.2rem; font-family: 'Courier New', Courier, monospace; }
+.credit-card .card-info { display: flex; justify-content: space-between; align-items: flex-end; }
+.credit-card .label { font-size: 0.7rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+.credit-card .value { font-size: 1rem; font-weight: 500; display: block; margin-top: 0.2rem; letter-spacing: 1px; }
+/* Campos del formulario compactos */ .input-group-text { background: #f7f9fb; border: none; color: #4e54c8; font-size: 1.2rem; padding: 0.5rem 0.75rem; }
+.input-group .form-control { border-left: none; font-size: 1rem; padding: 0.5rem 0.75rem; }
+/* Botón centrado y ancho agradable */ .btn-success.w-100 { max-width: 250px; margin: 1.2rem auto 0 auto; display: block; }
+/* Responsivo para móviles */ @media (max-width: 700px) { .container.py-4 { max-width: 98vw; padding: 1.2rem 0.5rem; } .credit-card { width: 98vw; min-width: 0; font-size: 0.9rem; } }

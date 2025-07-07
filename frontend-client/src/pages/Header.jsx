@@ -1,128 +1,100 @@
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'; // ✅ Importar correctamente
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '../context/AuthContext';
+import { useCart } from '../context/CartContext';
+import { useState } from 'react';
 
 const Header = () => {
-    const [activeMenu, setActiveMenu] = useState(null);
-    const [userName, setUserName] = useState(null);
 
-    useEffect(() => {
-        // Leer usuario simulado de localStorage
-        const user = JSON.parse(localStorage.getItem('fakeUser'));
-        if (user && user.nombre) {
-            setUserName(user.nombre);
-        } else {
-            setUserName(null);
-        }
-    }, []);
+  const navigate = useNavigate();
+  const { isAuthenticated, userName } = useAuth();
+  const { cart } = useCart();
+  const [showCart, setShowCart] = useState(false);
 
-    const handleLogout = () => {
-        localStorage.removeItem('fakeUser');
-        setUserName(null);
-        window.location.href = '/login';
-    };
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-    const toggleMenu = (menu) => {
-        setActiveMenu(activeMenu === menu ? null : menu);
-    };
+  const toggleCart = () => setShowCart((prev) => !prev);
 
-    const closeMenu = () => {
-        setActiveMenu(null);
-    };
+  return (
+    <header className="fixed top-0 left-0 w-full bg-[#FCF0E8] shadow-md z-50 px-4 py-3 flex items-center justify-between">
+      {/* Logo y Marca */}
+      <Link to="/home" className="flex items-center space-x-2">
+        <img src="/img/hmLoguito.png" alt="Logo de FastQRPay" className="w-10 h-10" />
+        <span className="font-bold text-xl text-black">FastQRPay</span>
+      </Link>
 
-    return (
-        <header
-            className="fixed top-0 left-0 w-full shadow-lg flex items-center justify-between px-8 py-4 z-50"
-            style={{ backgroundColor: "#FCF0E8" }}
+      {/* Navegación derecha */}
+      <div className="flex items-center space-x-6 relative">
+        {/* Enlace al Catálogo */}
+        <Link
+          to="/products"
+          className="text-sm font-medium text-gray-800 hover:text-red-600 transition hidden sm:inline"
         >
-            <div className="flex items-center space-x-4">
-                <img
-                    src="/img/hmLoguito.png"
-                    alt="Logotipo de Healthy Mind"
-                    className="w-[50px] h-[50px]"
-                />
-                <h1 className="text-2xl font-bold text-black">
-                    <Link
-                        to="/home"
-                        className="hover:text-amber-700 transition duration-200"
-                    >
-                        FastQRPay
-                    </Link>
-                </h1>
-            </div>
 
-            <nav className="nav font-bold text-lg text-black">
-                <ul className="flex items-center justify-end space-x-8">
-                    <li>
-                        <Link
-                            to="/home"
-                            className="hover:text-amber-700 transition duration-200"
-                            onClick={closeMenu}
-                        >
-                            FastQRPay
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/products"
-                            className="hover:text-amber-700 transition duration-200"
-                            onClick={closeMenu}
-                        >
-                            Productos
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/promotions"
-                            className="hover:text-amber-700 transition duration-200"
-                            onClick={closeMenu}
-                        >
-                            Promociones
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/contactus"
-                            className="hover:text-amber-700 transition duration-200"
-                            onClick={closeMenu}
-                        >
-                            Contáctanos
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
+          Catálogo
+        </Link>
 
-            <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-2">
-                    <Link
-                        to="/login"
-                        className="text-black hover:text-amber-700 transition duration-200 font-semibold"
-                    >
-                        <FontAwesomeIcon icon={faCircleUser} size="2x" />
-                    </Link>
-                    {userName && (
-                        <>
-                            <span className="text-black font-semibold text-base">{userName}</span>
-                            <button
-                                onClick={handleLogout}
-                                className="ml-2 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-700 text-xs font-semibold transition duration-200"
-                            >
-                                Cerrar sesión
-                            </button>
-                        </>
-                    )}
-                </div>
-                <Link
-                    to="/"
-                    className="text-black hover:text-amber-700 transition duration-200"
-                >
-                    <FontAwesomeIcon icon={faCartShopping} size="2x" />
-                </Link>
+        {/* Saludo si está logeado */}
+        {isAuthenticated && (
+          <span className="hidden sm:inline-block text-sm font-medium text-gray-800">
+            ¡Hola, {userName}!
+          </span>
+        )}
+
+        {/* Icono Usuario */}
+        <Link to="/login" className="text-black hover:text-amber-600 transition">
+          <FontAwesomeIcon icon={faCircleUser} size="lg" />
+        </Link>
+
+        {/* Icono Carrito con contador y dropdown */}
+        <div className="relative">
+          <button
+            onClick={toggleCart}
+            className="relative text-black hover:text-amber-600 transition"
+          >
+            <FontAwesomeIcon icon={faCartShopping} size="lg" />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </button>
+
+          {showCart && (
+            <div className="absolute right-0 mt-3 w-72 bg-white rounded-xl shadow-lg p-4 z-50">
+              <h4 className="text-base font-semibold mb-2 text-gray-800">Tu carrito</h4>
+
+              {cart.length === 0 ? (
+                <p className="text-sm text-gray-500 text-center">Tu carrito está vacío</p>
+              ) : (
+                <>
+                  <ul className="divide-y max-h-40 overflow-y-auto mb-3">
+                    {cart.map((item, idx) => (
+                      <li key={idx} className="py-2 flex justify-between text-sm">
+                        <span>{item.name} × {item.quantity}</span>
+                        <span className="font-medium text-gray-700">{item.price}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    onClick={() => {
+                      setShowCart(false);
+                      navigate('/checkout');
+                    }}
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-md transition"
+                  >
+                    Realizar Pedido
+                  </button>
+                </>
+              )}
             </div>
-        </header>
-    );
+          )}
+        </div>
+      </div>
+    </header>
+  );
 };
 
 export default Header;

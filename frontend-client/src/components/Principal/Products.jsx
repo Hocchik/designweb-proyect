@@ -1,4 +1,5 @@
-import React from 'react';
+import { useAuth } from '../../context/AuthContext';
+import { useCart } from '../../context/CartContext';
 
 const products = [
     {
@@ -40,32 +41,36 @@ const products = [
 ];
 
 const Products = () => {
-    return (
-        <div className="p-6">
-            <h1 className="text-3xl font-bold mb-6 text-center">Nuestros Productos</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {products.map((product) => (
-                    <div
-                        key={product.id}
-                        className="bg-white shadow-md rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
-                    >
-                        <img
-                            src={product.image}
-                            alt={product.name}
-                            className="w-full h-48 object-cover"
-                        />
-                        <div className="p-4">
-                            <h2 className="text-xl font-semibold">{product.name}</h2>
-                            <p className="text-gray-600">{product.price}</p>
-                            <button className="mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
-                                Agregar al carrito
-                            </button>
-                        </div>
-                    </div>
-                ))}
+  const { isAuthenticated } = useAuth();
+  const { addToCart } = useCart();
+
+  return (
+    <div className="mt-20 p-6">
+      <h1 className="text-3xl font-bold mb-6 text-center">Nuestros Productos</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {products.map((product) => (
+          <div key={product.id} className="bg-white shadow-md rounded-lg overflow-hidden transition hover:scale-105">
+            <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+            <div className="p-4">
+              <h2 className="text-xl font-semibold">{product.name}</h2>
+              <p className="text-gray-600">{product.price}</p>
+              <button
+                onClick={() =>
+                  isAuthenticated
+                    ? addToCart(product)
+                    : window.location.href = "/login"
+                }
+                className="mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 w-full"
+              >
+                Agregar al carrito
+              </button>
             </div>
-        </div>
-    );
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
+
 
 export default Products;

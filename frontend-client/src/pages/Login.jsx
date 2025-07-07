@@ -10,12 +10,14 @@ const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
 
+
   const onSubmit = handleSubmit((data) => {
     const usuariosRegistrados = JSON.parse(localStorage.getItem('usuarios')) || [];
 
     const usuarioEncontrado = usuariosRegistrados.find(
       (u) => u.email === data.email && u.password === data.password
     );
+
 
     if (usuarioEncontrado) {
       login(usuarioEncontrado.nombre); // Autenticación con contexto

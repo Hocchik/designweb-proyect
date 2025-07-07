@@ -7,6 +7,7 @@ import { useCart } from '../context/CartContext';
 import { useState } from 'react';
 
 const Header = () => {
+
   const navigate = useNavigate();
   const { isAuthenticated, userName } = useAuth();
   const { cart } = useCart();
@@ -31,6 +32,7 @@ const Header = () => {
           to="/products"
           className="text-sm font-medium text-gray-800 hover:text-red-600 transition hidden sm:inline"
         >
+
           Catálogo
         </Link>
 

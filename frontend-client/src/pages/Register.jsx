@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 const Register = () => {
+
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
@@ -95,6 +96,7 @@ const Register = () => {
             />
             {errors.confirmacionContraseña && (
               <span className="text-red-400 text-sm">Este campo es requerido</span>
+
             )}
           </div>
 

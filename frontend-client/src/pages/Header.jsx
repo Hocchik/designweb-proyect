@@ -18,41 +18,34 @@ const Header = () => {
   const toggleCart = () => setShowCart((prev) => !prev);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#FCF0E8] shadow-md z-50 px-4 py-3 flex items-center justify-between">
+    <header className="fixed top-0 left-0 w-full bg-[#ffffff] shadow-md z-50 px-4 py-3 flex items-center justify-between">
       {/* Logo y Marca */}
       <Link to="/home" className="flex items-center space-x-2">
-        <img src="/img/hmLoguito.png" alt="Logo de FastQRPay" className="w-10 h-10" />
-        <span className="font-bold text-xl text-black">FastQRPay</span>
+        <span className="font-bold text-xl text-black hover:text-red-600">FastQRPay</span>
       </Link>
 
       {/* Navegación derecha */}
       <div className="flex items-center space-x-6 relative">
-        {/* Enlace al Catálogo */}
-        <Link
-          to="/products"
-          className="text-sm font-medium text-gray-800 hover:text-red-600 transition hidden sm:inline"
-        >
-
-          Catálogo
-        </Link>
-
         {/* Saludo si está logeado */}
         {isAuthenticated && (
-          <span className="hidden sm:inline-block text-sm font-medium text-gray-800">
+          <span className="hidden sm:inline-block text-sm font-medium text-gray-800 hover:text-red-600">
             ¡Hola, {userName}!
           </span>
         )}
 
-        {/* Icono Usuario */}
-        <Link to="/login" className="text-black hover:text-amber-600 transition">
-          <FontAwesomeIcon icon={faCircleUser} size="lg" />
+        {/* Enlace al Catálogo */}
+        <Link
+          to="/catalog/hamburger"
+          className="text-sm font-medium text-gray-800 hover:text-red-600 transition hidden sm:inline"
+        >
+          Catálogo
         </Link>
 
         {/* Icono Carrito con contador y dropdown */}
         <div className="relative">
           <button
             onClick={toggleCart}
-            className="relative text-black hover:text-amber-600 transition"
+            className="relative text-black hover:text-red-600 transition"
           >
             <FontAwesomeIcon icon={faCartShopping} size="lg" />
             {totalItems > 0 && (
@@ -83,7 +76,7 @@ const Header = () => {
                       setShowCart(false);
                       navigate('/checkout');
                     }}
-                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-md transition"
+                    className="w-full bg-red-600 hover:bg-red-600 text-white font-semibold py-2 rounded-md transition"
                   >
                     Realizar Pedido
                   </button>
@@ -92,6 +85,11 @@ const Header = () => {
             </div>
           )}
         </div>
+
+        {/* Icono Usuario */}
+        <Link to="/login" className="text-black hover:text-red-600 transition">
+          <FontAwesomeIcon icon={faCircleUser} size="lg" />
+        </Link>
       </div>
     </header>
   );

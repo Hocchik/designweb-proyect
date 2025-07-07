@@ -5,52 +5,52 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 const products = [
     {
-        id: 1,
+        id: 5,
         name: 'Coca Cola 500 ml',
         description: 'Refresco carbonatado con el sabor original que todos conocen y aman. Perfecta para acompañar cualquier comida.',
-        price: 'S/ 5.00',
+        price: 5.00,
         image: 'https://www.bembos.com.pe/media/catalog/product/2/1/2146469602.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg',
     },
     {
-        id: 2,
+        id: 6,
         name: 'Coca Cola Sin Azúcar 500 ml',
         description: 'El mismo sabor clásico de Coca-Cola pero sin azúcar. Ideal para quienes buscan reducir su consumo de azúcar.',
-        price: 'S/ 5.00',
+        price: 5.00,
         image: 'https://www.bembos.com.pe/media/catalog/product/2/1/2146469603.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg',
     },
     {
-        id: 3,
+        id: 7,
         name: 'Inca Kola 500 ml',
         description: 'La bebida de sabor único y original del Perú, con su característico sabor a hierba luisa. El complemento perfecto para tu comida.',
-        price: 'S/ 5.00',
+        price: 5.00,
         image: 'https://www.bembos.com.pe/media/catalog/product/2/1/2146469604.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg',
     },
     {
-        id: 4,
+        id: 8,
         name: 'Inca kola Sin Azúcar 500 ml',
         description: 'El sabor único de Inca Kola en su versión sin azúcar. Disfruta del sabor nacional sin preocuparte.',
-        price: 'S/ 5.00',
+        price: 5.00,
         image: 'https://www.bembos.com.pe/media/catalog/product/2/1/2146469605.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg',
     },
     {
-        id: 5,
+        id: 9,
         name: 'Sprite 500 ml',
         description: 'Bebida refrescante con sabor a lima-limón. Clara, cristalina y burbujeante, perfecta para refrescarte.',
-        price: 'S/ 5.00',
+        price: 5.00,
         image: 'https://www.bembos.com.pe/media/catalog/product/2/1/2146469606.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg',
     },
     {
-        id: 6,
+        id: 10,
         name: 'Fanta 500ml',
         description: 'Refresco con delicioso sabor a naranja. Burbujeante y frutal, ideal para momentos divertidos.',
-        price: 'S/ 5.00',
+        price: 5.00,
         image: 'https://www.bembos.com.pe/media/catalog/product/2/1/2146469607.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg',
     },
     {
-        id: 7,
+        id: 11,
         name: 'Agua San Luis sin gas 625 ml',
         description: 'Agua natural purificada sin gas. Hidratación pura y refrescante para cualquier momento del día.',
-        price: 'S/ 4.00',
+        price: 4.00,
         image: 'https://www.bembos.com.pe/media/catalog/product/2/1/2146469608.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg',
     },
 ];
@@ -93,7 +93,7 @@ const Drinks = () => {
                         </div>
                         <div className="p-4 text-center">
                             <h2 className="text-2xl font-bold text-gray-800 mb-2">{product.name}</h2>
-                            <p className="text-xl font-bold text-gray-900 mb-4">{product.price}</p>
+                            <p className="text-xl font-bold text-gray-900 mb-4">S/ {product.price.toFixed(2)}</p>
                             <p className="text-gray-500 text-sm mb-4">{product.description}</p>
                             <button
                                 onClick={() =>

@@ -12,7 +12,7 @@ const Checkout = () => {
   const [card, setCard] = useState({ numero: '', nombre: '', expiracion: '', cvv: '' });
 
 
-  const parsePrice = (price) => parseFloat(price.replace(/S\/\s?/, '').replace(',', '.')) || 0;
+  const parsePrice = (price) => parseFloat(price) || 0;
   const total = cart.reduce((sum, item) => sum + parsePrice(item.price) * item.quantity, 0).toFixed(2);
 
   const handlePagoRealizado = () => {

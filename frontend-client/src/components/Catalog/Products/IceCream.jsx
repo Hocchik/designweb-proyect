@@ -5,80 +5,80 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 const products = [
     {
-        id: 1,
+        id: 20,
         name: 'McFlurry Oreo®',
         description: 'Delicioso helado de vainilla mezclado con trozos de galleta Oreo®. Una combinación irresistible de cremosidad y crujiente.',
-        price: 'S/ 7.00',
+        price: 7.00,
         image: 'https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$kpXMGerB/200/200/original?country=pe',
     },
     {
-        id: 2,
+        id: 21,
         name: 'Super Cono Combinado',
         description: 'Helado suave en cono con una deliciosa mezcla de vainilla y chocolate. El balance perfecto entre dos sabores clásicos.',
-        price: 'S/ 4.00',
+        price: 4.00,
         image: 'https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$supercono.png/200/200/original?country=pe',
     },
     {
-        id: 3,
+        id: 22,
         name: 'McFlurry M&M',
         description: 'Cremoso helado de vainilla con coloridos chocolates M&M. Una explosión de sabor y diversión en cada cucharada.',
-        price: 'S/ 7.00',
+        price: 7.00,
         image: 'https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$kpXA1VM3/200/200/original?country=pe',
     },
     {
-        id: 4,
+        id: 23,
         name: 'Super Cono Chocolate',
         description: 'Generoso cono de helado suave sabor chocolate. El placer del chocolate en su forma más refrescante.',
-        price: 'S/ 4.00',
+        price: 4.00,
         image: 'https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$supercono.png/200/200/original?country=pe',
     },
     {
-        id: 5,
+        id: 24,
         name: 'Sundae Chocolate',
         description: 'Helado de vainilla bañado en salsa de chocolate. Un clásico que nunca pasa de moda.',
-        price: 'S/ 6.50',
+        price: 6.50,
         image: 'https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$sundae-de-chocolate.png/200/200/original?country=pe',
     },
     {
-        id: 6,
+        id: 25,
         name: 'Super Cono Vainilla',
         description: 'Abundante helado suave de vainilla en cono. La opción perfecta para los amantes.',
-        price: 'S/ 4.00',
+        price: 4.00,
         image: 'https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$supercono.png/200/200/original?country=pe',
     },
     {
-        id: 7,
+        id: 26,
         name: 'Sundae Fresa',
         description: 'Helado de vainilla cubierto con salsa de fresa. Una combinación frutal y refrescante.',
-        price: 'S/ 7.00',
+        price: 7.00,
         image: 'https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$sundae-fresa.png/200/200/original?country=pe',
     },
     {
-        id: 8,
+        id: 27,
         name: 'Sundae de Dulce de Leche',
         description: 'Helado de vainilla con abundante dulce de leche. Un postre con el dulzor perfecto del manjar blanco.',
-        price: 'S/ 7.00',
+        price: 7.00,
         image: 'https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$sundae-manjar%20blanco.png/200/200/original?country=pe',
     },
     {
-        id: 9,
+        id: 28,
         name: 'McFlurry Sublime',
         description: 'Helado de vainilla mezclado con trozos de chocolate Sublime. Una experiencia única.',
-        price: 'S/ 7.00',
+        price: 7.00,
         image: 'https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$kUX902rV/200/200/original?country=pe',
     },
     {
-        id: 10,
+        id: 29,
         name: 'Cono Chocolate',
         description: 'Helado suave de chocolate en cono. El antojo perfecto para los amantes del chocolate.',
-        price: 'S/ 3.00',
+        price: 3.00,
         image: 'https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$Cono-chocolate.png/200/200/original?country=pe',
     },
     {
-        id: 11,
+        id: 30,
         name: 'Cono Vainilla',
         description: 'Clásico helado suave de vainilla en cono. Simple y delicioso.',
-        price: 'S/ 3.50',
+        price: 3.50,
         image: 'https://api-middleware-mcd.mcdonaldscupones.com/media/image/product$cono.png/200/200/original?country=pe',
     },
 ];
@@ -121,7 +121,7 @@ const IceCream = () => {
                         </div>
                         <div className="p-4 text-center">
                             <h2 className="text-2xl font-bold text-gray-800 mb-2">{product.name}</h2>
-                            <p className="text-xl font-bold text-gray-900 mb-4">{product.price}</p>
+                            <p className="text-xl font-bold text-gray-900 mb-4">S/ {product.price.toFixed(2)}</p>
                             <p className="text-gray-500 text-sm mb-4">{product.description}</p>
                             <button
                                 onClick={() =>

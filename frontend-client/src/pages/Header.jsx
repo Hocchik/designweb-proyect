@@ -67,7 +67,7 @@ const Header = () => {
                     {cart.map((item, idx) => (
                       <li key={idx} className="py-2 flex justify-between text-sm">
                         <span>{item.name} × {item.quantity}</span>
-                        <span className="font-medium text-gray-700">{item.price}</span>
+                        <span className="font-medium text-gray-700">S/ {item.price.toFixed(2)}</span>
                       </li>
                     ))}
                   </ul>

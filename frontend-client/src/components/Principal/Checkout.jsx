@@ -27,8 +27,8 @@ const Checkout = () => {
 
       {/* Resumen del Carrito */}
       <section className="bg-white rounded-lg shadow-md p-4">
-        <h2 className="text-lg font-semibold mb-3 text-gray-700">🧾 Resumen del Pedido</h2>
-        <ul className="divide-y text-sm text-gray-700">
+        <h2 className="text-lg font-bold mb-3 text-black">Resumen del Pedido:</h2>
+        <ul className="divide-y text-sm text-black">
           {cart.map((item, i) => (
             <li key={i} className="py-2 flex justify-between">
               <span>{item.name} × {item.quantity}</span>
@@ -44,15 +44,14 @@ const Checkout = () => {
 
       {/* Método de Pago */}
       <section className="bg-white rounded-lg shadow-md p-4">
-        <h2 className="text-lg font-semibold mb-3 text-gray-700">💳 Método de Pago</h2>
+        <h2 className="text-lg font-bold mb-3 text-black">Método de Pago:</h2>
         <div className="flex gap-3">
           {['tarjeta', 'efectivo', 'billetera'].map((m) => (
             <button
               key={m}
               onClick={() => setMetodo(m)}
-              className={`flex-1 py-2 rounded-md font-medium ${
-                metodo === m ? 'bg-red-600 text-white' : 'bg-gray-200 text-gray-700'
-              }`}
+              className={`flex-1 py-2 rounded-md font-medium ${metodo === m ? 'bg-red-600 text-white' : 'bg-gray-200 text-gray-700'
+                }`}
             >
               {m === 'tarjeta' && 'Tarjeta'}
               {m === 'efectivo' && 'Efectivo'}
@@ -64,52 +63,59 @@ const Checkout = () => {
 
       {/* Formulario por método */}
       {metodo === 'tarjeta' && (
-        <section className="bg-white rounded-lg shadow-md p-4 space-y-4">
-            <h3 className="font-semibold text-gray-700">🧾 Datos de Tarjeta</h3>
+        <section className="bg-white rounded-xl shadow-lg p-6 space-y-5">
+          <h3 className="text-lg font-semibold text-gray-800">🧾 Datos de Tarjeta</h3>
 
-            <CreditCard
+          <CreditCard
             numero={card.numero}
             nombre={card.nombre}
             expiracion={card.expiracion}
-            />
+          />
 
-            <input
+          <input
             placeholder="N° Tarjeta"
-            className="input"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             maxLength={16}
             value={card.numero}
             onChange={(e) => setCard({ ...card, numero: e.target.value })}
-            />
+          />
 
-            <input
+          <input
             placeholder="Nombre en la tarjeta"
-            className="input"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={card.nombre}
+            maxLength={20}
             onChange={(e) => setCard({ ...card, nombre: e.target.value })}
-            />
+          />
 
-            <div className="flex gap-2">
+          <div className="flex gap-4">
             <input
-                placeholder="MM/YY"
-                className="input w-1/2"
-                maxLength={5}
-                value={card.expiracion}
-                onChange={(e) => setCard({ ...card, expiracion: e.target.value })}
+              placeholder="MM/YY"
+              className="w-1/2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              maxLength={5}
+              value={card.expiracion}
+              onChange={(e) => setCard({ ...card, expiracion: e.target.value })}
             />
             <input
-                placeholder="CVV"
-                className="input w-1/2"
-                maxLength={4}
-                value={card.cvv}
-                onChange={(e) => setCard({ ...card, cvv: e.target.value })}
+              placeholder="CVV"
+              className="w-1/2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              maxLength={3}
+              value={card.cvv}
+              onChange={(e) => setCard({ ...card, cvv: e.target.value })}
             />
-            </div>
+          </div>
 
-            <button onClick={handlePagoRealizado} className="btn-red w-full">
-            Pagar S/ {total}
+          <div className="flex justify-center">
+            <button
+              onClick={handlePagoRealizado}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200"
+            >
+              Pagar S/ {total}
             </button>
+          </div>
         </section>
-    )}
+      )}
+
 
 
       {metodo === 'efectivo' && (

@@ -31,7 +31,7 @@ const Login = () => {
     <section
       className="flex flex-col justify-center items-center min-h-screen text-white relative overflow-hidden"
       style={{
-        backgroundImage: `url('https://media.istockphoto.com/id/914633400/es/foto/familia-con-dos-ni%C3%B1os-comiendo-comida-r%C3%A1pida.jpg')`,
+        backgroundImage: `url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/f2/49/ff/bembos.jpg?w=900&h=-1&s=1')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

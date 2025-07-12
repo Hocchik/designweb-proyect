@@ -86,15 +86,14 @@ const Promos = () => {
         console.log(`Añadido al carrito: ${product.name}`);
     };
 
-    const handleProductClick = (item) => {
-        const urlImg = encodeURIComponent(item.image).replace(/%2F/g, '|');
-        const url = `/home/producto/detalles/${item.id}/${item.name}/${item.price}/${urlImg}`;
-        navigate(url);
+    const handleProductClick = () => {
+        navigate('/catalog/hamburger');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (
-        <div className="p-4">
-            <h2 className="text-black text-3xl font-semibold p-4 text-center">
+        <div className="p-6">
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
                 Productos más vendidos
             </h2>
             <div className="relative mt-0.5">
@@ -118,7 +117,7 @@ const Promos = () => {
                     {promosComidaRapida.map((product) => (
                         <div
                             key={product.id}
-                            onClick={() => handleProductClick(product)}
+                            onClick={handleProductClick}
                             className="max-w-[300px] m-4 bg-white shadow-xl rounded-lg inline-block transition-transform transform hover:scale-105 cursor-pointer"
                         >
                             <div className="relative">
@@ -140,15 +139,7 @@ const Promos = () => {
                             <div className="p-4">
                                 <h2 className="font-semibold text-xl">{product.name}</h2>
                                 <p className="text-black font-bold text-center">{product.price}</p>
-                                <button
-                                    className="mt-4 w-full text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleAddToCart(product);
-                                    }}
-                                >
-                                    Añadir al Carrito
-                                </button>
+
                             </div>
                         </div>
                     ))}

@@ -84,7 +84,7 @@ const Chicken = () => {
                                         ? addToCart(product)
                                         : window.location.href = "/login"
                                 }
-                                className="w-full bg-blue-800 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-900 transition duration-300"
+                                className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 w-full"
                             >
                                 Agregar al pedido
                             </button>

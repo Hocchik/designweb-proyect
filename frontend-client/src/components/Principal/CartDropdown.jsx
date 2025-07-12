@@ -24,7 +24,7 @@ const CartDropdown = () => {
 
   return (
     <div className="absolute right-0 mt-2 w-72 bg-white shadow-lg rounded-lg p-4 z-40">
-      <h3 className="text-base font-semibold text-gray-700 mb-2">
+      <h3 className="text-base font-bold text-gray-700 mb-2">
         Carrito ({totalItems} {totalItems > 1 ? 'productos' : 'producto'})
       </h3>
 

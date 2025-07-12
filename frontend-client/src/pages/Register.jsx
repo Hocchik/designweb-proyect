@@ -41,7 +41,7 @@ const Register = () => {
     <section
       className="flex flex-col justify-center items-center min-h-screen text-white relative overflow-hidden"
       style={{
-        backgroundImage: `url('https://media.istockphoto.com/id/914633400/es/foto/familia-con-dos-ni%C3%B1os-comiendo-comida-r%C3%A1pida.jpg')`,
+        backgroundImage: `url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/f2/49/ff/bembos.jpg?w=900&h=-1&s=1')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
@@ -116,7 +116,7 @@ const Register = () => {
         </div>
       </div>
 
-            {showModal && (
+      {showModal && (
         <div className="fixed inset-0 flex items-center justify-center z-20 bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-xl shadow-xl text-center">
             <svg className="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

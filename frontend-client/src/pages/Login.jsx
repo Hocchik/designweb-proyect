@@ -20,7 +20,7 @@ const Login = () => {
 
 
     if (usuarioEncontrado) {
-      login(usuarioEncontrado.nombre); // Autenticación con contexto
+      login(usuarioEncontrado.nombre, usuarioEncontrado.email); // Autenticación con contexto
       navigate('/home');
     } else {
       setError(true);

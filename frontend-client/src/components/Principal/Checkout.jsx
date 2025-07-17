@@ -2,6 +2,7 @@ import { useCart } from '../../context/CartContext';
 import { useState } from 'react';
 import CreditCard from './CreditCart';
 import { useNavigate } from 'react-router-dom';
+import QRCode from 'react-qr-code';
 /* import emailjs from 'emailjs-com';
 import { useAuth } from '../../context/AuthContext'; */
 
@@ -182,7 +183,18 @@ const Checkout = () => {
 
           {qrGenerado && (
             <>
-              <img src="https://pngimg.com/d/qr_code_PNG33.png" alt="QR pago efectivo" className="mx-auto w-40 mt-4" />
+              <QRCode
+                value={JSON.stringify({
+                  metodo: 'efectivo',
+                  montoEntregado: monto,
+                  totalPedido: total,
+                  productos: cart.map(item => `${item.name} × ${item.quantity}`)
+                })}
+                size={160}
+                fgColor="#000000"
+                bgColor="#ffffff"
+                className="mx-auto mt-4"
+              />
               <div className='flex justify-center'>
                 <button onClick={handlePagoRealizado} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200">
                   Confirmar Pago
@@ -257,11 +269,19 @@ const Checkout = () => {
           {qrGenerado && (
             <div className="text-center space-y-2 mt-4">
               <p className="text-sm text-gray-700">Método seleccionado: <strong>{walletSeleccionada}</strong></p>
-              <img
-                src="https://pngimg.com/d/qr_code_PNG33.png"
-                alt="QR billetera"
-                className="mx-auto w-36 transition-opacity duration-300 animate-fadeIn"
+              <QRCode
+                value={JSON.stringify({
+                  metodo: walletSeleccionada,
+                  total: total,
+                  cip: '01374290461',
+                  productos: cart.map(item => `${item.name} × ${item.quantity}`)
+                })}
+                size={160}
+                fgColor="#000000"
+                bgColor="#ffffff"
+                className="mx-auto mt-4"
               />
+
               <p className="text-sm text-gray-700">CIP Alternativo: <strong>01374290461</strong></p>
               <button
                 onClick={handlePagoRealizado}

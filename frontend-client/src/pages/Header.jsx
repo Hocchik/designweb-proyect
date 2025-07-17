@@ -10,7 +10,7 @@ const Header = () => {
 
   const navigate = useNavigate();
   const { isAuthenticated, userName } = useAuth();
-  const { cart } = useCart();
+  const { cart, increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
   const [showCart, setShowCart] = useState(false);
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -56,27 +56,49 @@ const Header = () => {
           </button>
 
           {showCart && (
-            <div className="absolute right-0 mt-3 w-72 bg-white rounded-xl shadow-lg p-4 z-50">
+            <div className="absolute right-0 mt-3 w-80 bg-white rounded-xl shadow-lg p-4 z-50">
               <h4 className="text-base font-semibold mb-2 text-gray-800">Tu carrito</h4>
 
               {cart.length === 0 ? (
                 <p className="text-sm text-gray-500 text-center">Tu carrito está vacío</p>
               ) : (
                 <>
-                  <ul className="divide-y max-h-40 overflow-y-auto mb-3">
+                  <ul className="divide-y max-h-52 overflow-y-auto mb-3">
                     {cart.map((item, idx) => (
-                      <li key={idx} className="py-2 flex justify-between text-sm">
-                        <span>{item.name} × {item.quantity}</span>
-                        <span className="font-medium text-gray-700">S/ {item.price.toFixed(2)}</span>
+                      <li key={idx} className="py-2 text-sm">
+                        <div className="flex justify-between items-center">
+                          <span className="font-medium">{item.name}</span>
+                          <span className="text-gray-700 font-medium">
+                            S/ {(item.price*item.quantity).toFixed(2)}
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-center mt-1">
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => decreaseQuantity(item.id)}
+                              className="px-2 bg-gray-200 rounded hover:bg-gray-300"
+                            >−</button>
+                            <span>{item.quantity}</span>
+                            <button
+                              onClick={() => increaseQuantity(item.id)}
+                              className="px-2 bg-gray-200 rounded hover:bg-gray-300"
+                            >+</button>
+                          </div>
+                          <button
+                            onClick={() => removeFromCart(item.id)}
+                            className="text-xs text-red-600 hover:text-red-700"
+                          >Eliminar</button>
+                        </div>
                       </li>
                     ))}
                   </ul>
+
                   <button
                     onClick={() => {
                       setShowCart(false);
                       navigate('/checkout');
                     }}
-                    className="w-full bg-red-600 hover:bg-red-600 text-white font-semibold py-2 rounded-md transition"
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-md transition"
                   >
                     Realizar Pedido
                   </button>

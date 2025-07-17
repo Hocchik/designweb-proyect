@@ -14,15 +14,35 @@ export const CartProvider = ({ children }) => {
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      return [...prev, { ...product, quantity: 1 }];
+      return [...prev, { ...product, quantity: 1 }]; 
     });
+  };
+
+  const increaseQuantity = (id) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  const decreaseQuantity = (id) => {
+    setCart((prev) =>
+      prev
+        .map((item) =>
+          item.id === id && item.quantity > 1
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
   };
 
   const clearCart = () => setCart([]);
   const removeFromCart = (id) => setCart((prev) => prev.filter((item) => item.id !== id));
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, clearCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, increaseQuantity, decreaseQuantity, clearCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );

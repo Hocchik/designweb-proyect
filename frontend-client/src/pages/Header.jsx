@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faUtensils } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { useState } from 'react';
@@ -40,6 +40,16 @@ const Header = () => {
         >
           Catálogo
         </Link>
+
+        {/* Enlace al Catálogo - ícono para pantallas pequeñas */}
+        <Link
+          to="/catalog/hamburger"
+          className="text-black hover:text-red-600 transition sm:hidden"
+          aria-label="Catálogo"
+        >
+          <FontAwesomeIcon icon={faUtensils} size="lg" />
+        </Link>
+
 
         {/* Icono Carrito con contador y dropdown */}
         <div className="relative">

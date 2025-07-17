@@ -212,7 +212,7 @@ const Checkout = () => {
 
           <div className="flex justify-around">
             <img
-              src="/src/img/yape.png"
+              src="/public/img/yape.png"
               alt="Yape"
               onClick={() => setWalletSeleccionada("Yape")}
               className={`w-20 h-20 object-contain cursor-pointer transition-transform ${
@@ -220,7 +220,7 @@ const Checkout = () => {
               }`}
             />
             <img
-              src="/src/img/plin.png"
+              src="/public/img/plin.png"
               alt="Plin"
               onClick={() => setWalletSeleccionada("Plin")}
               className={`w-20 h-20 object-contain cursor-pointer transition-transform ${
@@ -228,7 +228,7 @@ const Checkout = () => {
               }`}
             />
             <img
-              src="/src/img/prexpe.png"
+              src="/public/img/prexpe.png"
               alt="Prexpe"
               onClick={() => setWalletSeleccionada("Prexpe")}
               className={`w-16 h-20 object-contain cursor-pointer transition-transform ${
